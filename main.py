@@ -85,8 +85,6 @@ class Data:
             nrows=n_rows, usecols=cols,
             chunksize=chunk
         )
-        # return df.sort_values(by='mal_id')
-        # return pd.concat(data)
         df = pd.concat(data)
         return df
 
@@ -285,7 +283,12 @@ class Data:
 
 
 if __name__ == '__main__':
-    data = Data("manga.csv")
+    data = Data("manga.csv", 100)
+    print(data.df_dataset)
     data.import_user('user.csv')
     data.compare_user_and_dataset()
-    data.export_result(columns=['mal_id'], index=False)
+    print(data.df_result)
+    data.export_result(
+        # columns=['mal_id'],
+        # index=False,
+    )
